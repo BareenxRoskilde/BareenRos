@@ -10,8 +10,7 @@ import SignupCard from '../components/SignupCard.astro';
 import SignupForm from '../components/SignupForm.astro';
 import ShopVideo from '../components/ShopVideo.astro';
 import Button from '../components/Button.astro';
-import Footer from '../components/Footer.astro';
-
+import Submitsucces from '../components/Submitsucces.astro';
 
 ---
 
@@ -28,12 +27,17 @@ import Footer from '../components/Footer.astro';
   price="349"
   colors={["#ffffff", "#000000"]}
 />
-<InfoCard />
+
+
+<InfoCard 
+imageUrl="infotext1.png"
+title="LIMITED EDITION DROP - KOM MED TIL FESTEN"
+text="Vi tager festen til et nyt niveau!"
+/>
 <SignupCard />
-<SignupForm />
+
 <ShopVideo />
 <Button />
-<Footer/>
 
 
 </Layout>

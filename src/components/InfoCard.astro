@@ -1,0 +1,71 @@
+---
+
+const { title, text, imageUrl } = Astro.props;
+---
+
+<section class="info-section">
+  <div class="info-text">
+    <h2>{title}</h2>
+   <p>{text}</p>
+  </div>
+
+  <div class="info-image">
+    <img src={imageUrl} alt="" />
+  </div>
+</section>
+
+<style>
+.info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  align-items: center;
+}
+
+.info-text h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-family: Arial, sans-serif;
+}
+
+.info-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-family: Arial, sans-serif;
+}
+
+.info-text p:last-child {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.info-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .info-section {
+    grid-template-columns: 1fr;
+  }
+
+  .info-image {
+    margin-top: 2rem;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
