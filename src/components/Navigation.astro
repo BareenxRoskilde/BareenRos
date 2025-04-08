@@ -1,29 +1,30 @@
 ---
-
+import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
 ---
 
 <header class="header">
   <nav class="nav">
-    <!-- Left -->
     <ul class="nav-left">
       <li><a href="#">HERRE</a></li>
       <li><a href="#">DAME</a></li>
       <li><a href="#">SPORT</a></li>
       <li><a href="#">COMMUNITY</a></li>
-      <li><a href="#">COLLABS</a></li>
+      <li><a href="/collab">COLLABS</a></li>
     </ul>
 
-    <!-- Logo -->
     <div class="logo">
         <a href="/"> <img src="bareenlogo.png" alt="logo"></a>
     </div>
 
-    <!-- Right -->
     <ul class="nav-right">
       <li><a href="#">CLUB</a></li>
       <li><a href="#">LOG IND</a></li>
       <li><img src="flag.png" alt="Flag" rounded-full object-cover></li>
+      <li><FaSearch size={18} /></li>
+      <li><FaHeart size={18} /></li>
+      <li><FaShoppingCart size={18} /></li>
     </ul>
+
   </nav>
 </header>
 
@@ -32,8 +33,8 @@
 
 <style>
 .header {
-  width: 100%;
-  padding: 1rem 2rem;
+  /* width: 100%; */
+  padding: 1.5rem;
   background: white;
   display: flex;
   justify-content: center;

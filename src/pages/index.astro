@@ -11,6 +11,7 @@ import SignupForm from '../components/SignupForm.astro';
 import ShopVideo from '../components/ShopVideo.astro';
 import Button from '../components/Button.astro';
 import Submitsucces from '../components/Submitsucces.astro';
+import Calender from '../components/Calender.astro';
 import "../css/style.css"
 
 ---
@@ -39,6 +40,7 @@ import "../css/style.css"
   price="349"
   colors={["#ffffff", "#000000"]}
 />
+
 <InfoCard 
   imageUrl="textcard2.png"
   title="Mød os på Roskilde Festival"
@@ -50,6 +52,8 @@ Sammen med Good Habit Co. sørger vi for kolde elektrolyt-drinks, så du holde
 
 Tjek vores eventkalender for bareen x RF herunder, og hold dig opdateret på alt der sker i Bareen Basecamp`}
 />
+<Calender />
+
 <InfoCard 
   imageUrl="popupshop.png"
   title="Få eksklusivt adgang før alle andre"
@@ -63,7 +67,7 @@ Du kan forvente klassiske Bareen-styles med et festivalstwist - perfekt til lang
 <SignupCard />
 <Submitsucces />
 <ShopVideo />
-<Button />
+
 
 </Layout>
 

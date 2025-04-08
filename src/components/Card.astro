@@ -13,14 +13,13 @@ const { imageUrl, title, price, colors = [] } = Astro.props;
         ))}
       </div>
     </div>
-
-
 <style>
-    .cards-container {
-    display: flex;
-    justify-content: space-between; /* Placerer kortene med lige afstand */
-    gap: 1rem; /* Lægger lidt mellemrum mellem kortene */
-    flex-wrap: wrap; /* Tillader kortene at bryde til næste linje på små skærme */
+    .cards-container { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+  
   }
   .card {
     border: 1px solid #e5e5e5;
