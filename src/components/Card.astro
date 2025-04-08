@@ -1,0 +1,54 @@
+---
+const { imageUrl, title, price, colors = [] } = Astro.props;
+---
+
+<div class="card">
+  <img src={imageUrl} class="product-image" />
+  <div class="card-content">
+    <h3>{title}</h3>
+    <p>{price} kr.</p>
+    <div class="colors">
+      {colors.map(color => (
+        <span class="color-dot" style={`background-color: ${color};`}></span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    border: 1px solid #e5e5e5;
+    padding: 1rem;
+    width: 300px;
+    background: white;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .card-content h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-content p {
+    margin: 0.5rem 0;
+  }
+
+  .colors {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .color-dot {
+    width: 30px;
+    height: 15px;
+    border-radius: 10%;
+    border: 1px solid #ccc;
+  }
+</style>
