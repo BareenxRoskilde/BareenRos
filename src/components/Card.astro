@@ -1,21 +1,27 @@
 ---
 const { imageUrl, title, price, colors = [] } = Astro.props;
 ---
-
-<div class="card">
-  <img src={imageUrl} class="product-image" />
-  <div class="card-content">
-    <h3>{title}</h3>
-    <p>{price} kr.</p>
-    <div class="colors">
-      {colors.map(color => (
-        <span class="color-dot" style={`background-color: ${color};`}></span>
-      ))}
+<div class="cards-container">
+  <div class="card">
+    <img src={imageUrl} class="product-image" />
+    <div class="card-content">
+      <h3>{title}</h3>
+      <p>{price} kr.</p>
+      <div class="colors">
+        {colors.map(color => (
+          <span class="color-dot" style={`background-color: ${color};`}></span>
+        ))}
+      </div>
     </div>
-  </div>
-</div>
+
 
 <style>
+    .cards-container {
+    display: flex;
+    justify-content: space-between; /* Placerer kortene med lige afstand */
+    gap: 1rem; /* Lægger lidt mellemrum mellem kortene */
+    flex-wrap: wrap; /* Tillader kortene at bryde til næste linje på små skærme */
+  }
   .card {
     border: 1px solid #e5e5e5;
     padding: 1rem;
