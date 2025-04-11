@@ -1,5 +1,5 @@
 ---
-const { title, text, imageUrl}  = Astro.props;
+const { title, text, imageUrl } = Astro.props;
 
 // Hvis text er undefined, giv den en tom streng som standard
 const textLines = (text || "").split("\n");
@@ -8,10 +8,7 @@ const textLines = (text || "").split("\n");
 <section class="info-section">
   <div class="info-text">
     <h2>{title}</h2>
-    <!-- Map over linjerne og generer et p-tag for hver linje -->
-    {textLines.map(line => (
-      <p>{line}</p>
-    ))}
+    <slot />
   </div>
 
   <div class="info-image">
@@ -19,39 +16,29 @@ const textLines = (text || "").split("\n");
   </div>
 </section>
 
-
-
 <style>
-.info-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  align-items: center;
-}
-.info-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
   .info-section {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    align-items: center;
+  }
+  .info-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
-  .info-image {
-    margin-top: 2rem;
+  @media (max-width: 768px) {
+    .info-section {
+      grid-template-columns: 1fr;
+    }
+
+    .info-image {
+      margin-top: 2rem;
+    }
   }
-}
 </style>
-
-
-
-
-
-
-
-

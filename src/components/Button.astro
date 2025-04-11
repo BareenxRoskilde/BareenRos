@@ -1,20 +1,18 @@
 ---
 
 ---
-<a href="/collab" class="shop-button">
-  Shop her
-</a>
+
+<a href="/collab" class="shop-button"> Shop her </a>
 
 <style>
   .shop-button {
     display: inline-block;
-    padding: 0.75rem 3rem;
-    background-color: #D0D0D0;
-    color: #5A5A5A;
+    padding: 0.2rem 1rem;
+    background-color: transparent;
+    color: white;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    border: 1px solid black;
-    text-shadow: 0.5px 0.2px rgba(0,0,0,0.5);
+    border: 1px solid white;
     font-family: "Inter", sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
@@ -22,8 +20,24 @@
   }
 
   .shop-button:hover {
-    background-color: #EFEFEF;
-     border: 1px solid white;
-     color: #908d8d;
+    background-color: #d6d8d8;
+    border: 1px solid white;
+    color: white;
+  }
+
+  @media (min-width: 600px) {
+    .shop-button {
+      display: inline-block;
+      padding: 0.75rem 3rem;
+      background-color: transparent;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      border: 1px solid white;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-align: center;
+    }
   }
 </style>

@@ -1,73 +1,49 @@
 ---
-
-import Card from '../components/Card.astro';
-import Layout from '../layouts/Layout.astro';
-import Headline from '../components/Headline.astro';
-import HeroSection from '../components/HeroSection.astro';
-import InfoCard from '../components/InfoCard.astro';
-import ShopCard from '../components/ShopCard.astro';
-import SignupCard from '../components/SignupCard.astro';
-import SignupForm from '../components/SignupForm.astro';
-import ShopVideo from '../components/ShopVideo.astro';
-import Button from '../components/Button.astro';
-import Submitsucces from '../components/Submitsucces.astro';
-import Calender from '../components/Calender.astro';
-import "../css/style.css"
-
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+import Headline from "../components/Headline.astro";
+import HeroSection from "../components/HeroSection.astro";
+import InfoCard from "../components/InfoCard.astro";
+import ShopCard from "../components/ShopCard.astro";
+import SignupCard from "../components/SignupCard.astro";
+import SignupForm from "../components/SignupForm.astro";
+import ShopVideo from "../components/ShopVideo.astro";
+import Button from "../components/Button.astro";
+import Submitsucces from "../components/Submitsucces.astro";
+import Calender from "../components/Calender.astro";
+import "../css/style.css";
 ---
 
 <Layout>
+  <HeroSection />
+  <Headline />
+  <InfoCard />
+  <ShopCard />
 
-<HeroSection />
-<Headline />
-<InfoCard />
-<ShopCard
- />
+  <InfoCard imageUrl="infotext1.png" title="LIMITED EDITION DROP - KOM MED TIL FESTEN">
+    <p>Vi tager festen til et nyt niveau! I samarbejde med Roskilde Festival lancerer vi en eksklusiv kollektion, der indfanger essensen af sommerdage, sene nætter og den der helt særlige festivalfølelse – den, man ikke kan forklare, men kun kan mærke.</p>
+    <p>Kollektionen kombinerer Bareens karakteristiske Streetwear med Roskildes ikoniske energi. Du kan forvente vilde styles og stærke detaljer – men som altid… der er begrænset antal, så det gælder om at være hurtig.</p>
+    <p>Bareen x Roskilde Festival er mere end bare tøj – det er en hel oplevelse. Vi er til stede midt på festivalpladsen med vores Bareen Basecamp, hvor du kan prøve hele kollektionen, finde dine festival-essentials samt deltage i vores Social Run og daglige events med masser af fed energi. Oplev samarbejdet. Mærk energien. Find os på Roskilde.</p>
+  </InfoCard>
 
+  <Card imageUrl="/images/bareen-roskilde-shirt.png" title="Roskilde x Bareen, Boxy Fit Heavy" price="349" colors={["#ffffff", "#000000"]} />
 
-<InfoCard 
-  imageUrl="infotext1.png"
-  title="LIMITED EDITION DROP - KOM MED TIL FESTEN"
-  text={`Vi tager festen til et nyt niveau!
-  I samarbejde med Roskilde Festival lancerer vi en eksklusiv kollektion, der indfanger essensen af sommerdage, sene nætter og den der helt særlige festivalfølelse – den, man ikke kan forklare, men kun kan mærke.
-  Kollektionen kombinerer Bareens karakteristiske Streetwear med Roskildes ikoniske energi. Du kan forvente vilde styles og stærke detaljer – men som altid… der er begrænset antal, så det gælder om at være hurtig.
-  Bareen x Roskilde Festival er mere end bare tøj – det er en hel oplevelse. Vi er til stede midt på festivalpladsen med vores Bareen Basecamp, hvor du kan prøve hele kollektionen, finde dine festival-essentials samt deltage i vores Social Run og daglige events med masser af fed energi. Oplev samarbejdet. Mærk energien. Find os på Roskilde.`}
-/>
+  <InfoCard imageUrl="textcard2.png" title="Mød os på Roskilde Festival">
+    <p>Bareen rykker ind på festivalpladsen med en pop-up shop og et univers fyldt med liv, energi og fede aktiviteter.</p>
+    <p>Udover kollektionen kan du hver dag opleve events, der samler fællesskabet og sætter gang i kroppen – fra Social Runs til styling sessions, bare en frokost og chill vibes i Basecamp.</p>
+    <p>Sammen med Good Habit Co. sørger vi for kolde elektrolyt-drinks, så du holder dig frisk hele vejen gennem festivalen.</p>
+    <p>Tjek vores eventkalender for bareen x RF herunder, og hold dig opdateret på alt der sker i Bareen Basecamp.</p>
+  </InfoCard>
 
-<Card
-  imageUrl="/images/bareen-roskilde-shirt.png"
-  title="Roskilde x Bareen, Boxy Fit Heavy"
-  price="349"
-  colors={["#ffffff", "#000000"]}
-/>
+  <Calender />
 
-<InfoCard 
-  imageUrl="textcard2.png"
-  title="Mød os på Roskilde Festival"
-  text={`Bareen rykker ind på festivalpladsen med en pop-up shop og et univers fyldt med liv, energi og fede aktiviteter.
+  <InfoCard imageUrl="popupshop.png" title="Få eksklusivt adgang før alle andre">
+    <p>Festivalsstemningen rammer snart, og med Bareen x Roskilde får du adgang til en limited edition-kollektion, men kun de hurtigste får adgang først.</p>
+    <p>Ved at signe op får du eksklusivt early access til kollektionen, før den bliver officelt lanceret. Det betyder, at du kan sikre dig dine favoritter, inden de rammer shoppen - og som altid gælder det: Når de er væk, er de væk.</p>
+    <p>Du kan forvente klassiske Bareen-styles med et festivalstwist - perfekt til lange sommerdage og sene nætter.</p>
+  </InfoCard>
 
-Udover kollektionen kan du hver dag opleve events, der samler fællesskabet og sætter gang i kroppen – fra Social Runs til styling sessions, bare en frokost og chill vibes i Basecamp.
-
-Sammen med Good Habit Co. sørger vi for kolde elektrolyt-drinks, så du holder dig frisk hele vejen gennem festivalen.
-
-Tjek vores eventkalender for bareen x RF herunder, og hold dig opdateret på alt der sker i Bareen Basecamp`}
-/>
-<Calender />
-
-<InfoCard 
-  imageUrl="popupshop.png"
-  title="Få eksklusivt adgang før alle andre"
-  text={`Festivalsstemningen rammer snart, og med Bareen x Roskilde får du adgang til en limited edition-kollektion, men kun de hurtigste får adgang først.
-
-Ved at signe op får du eksklusivt early access til kollektionen, før den bliver officelt lanceret. Det betyder, at du kan sikre dig dine favoritter, inden de rammer shoppen - og som altid gælder det: Når de er væk, er de væk.
-
-Du kan forvente klassiske Bareen-styles med et festivalstwist - perfekt til lange sommerdage og sene nætter.`}
-/>
-
-<SignupCard />
-<Submitsucces />
-<ShopVideo />
-
-
+  <SignupCard />
+  <Submitsucces />
+  <ShopVideo />
 </Layout>
-

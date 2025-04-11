@@ -1,16 +1,111 @@
-<div class="calender">
-<img src="caonsdag.png" alt="">
-<img src="catorsdag.png" alt="">
-<img src="cafredag.png" alt="">
-<img src="calørdag.png" alt="">
+---
+
+---
+
+<div class="calender-wrapper">
+  <!-- Mobil slideshow -->
+  <div class="slideshow-box">
+    <button class="arrow left" id="prevBtn">❮</button>
+    <img id="slideshow-image" src="caonsdag.png" alt="Slideshow image" />
+    <button class="arrow right" id="nextBtn">❯</button>
+  </div>
+
+  <!-- Desktop grid -->
+  <div class="calender">
+    <img src="caonsdag.png" alt="" />
+    <img src="catorsdag.png" alt="" />
+    <img src="cafredag.png" alt="" />
+    <img src="calørdag.png" alt="" />
+  </div>
 </div>
 
+<script type="module">
+  const images = ["caonsdag.png", "catorsdag.png", "cafredag.png", "calørdag.png"];
+
+  let currentIndex = 0;
+
+  function updateSlide() {
+    const slideshowImage = document.getElementById("slideshow-image");
+    if (slideshowImage) {
+      slideshowImage.src = images[currentIndex];
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlide();
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlide();
+      });
+    }
+  });
+</script>
+
 <style>
-.calender{
+  .calender-wrapper {
+    width: 100%;
+  }
+
+  /* Slideshow container */
+  .slideshow-box {
+    position: relative;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slideshow-box img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Pile */
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  .arrow.left {
+    left: 10px;
+  }
+
+  .arrow.right {
+    right: 10px;
+  }
+
+  /* Grid layout til desktop */
+  .calender {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
-    padding: 1.5rem;
+  }
 
-}
+  /* Kun mobil: vis slideshow, skjul grid */
+  @media (max-width: 768px) {
+    .slideshow-box {
+      display: flex;
+    }
+
+    .calender {
+      display: none;
+    }
+  }
 </style>
