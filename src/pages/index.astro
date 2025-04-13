@@ -1,24 +1,46 @@
 ---
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
-import Headline from "../components/Headline.astro";
 import HeroSection from "../components/HeroSection.astro";
+import Headline from "../components/Headline.astro";
 import InfoCard from "../components/InfoCard.astro";
-import ShopCard from "../components/ShopCard.astro";
-import SignupCard from "../components/SignupCard.astro";
-import SignupForm from "../components/SignupForm.astro";
-import ShopVideo from "../components/ShopVideo.astro";
-import Button from "../components/Button.astro";
-import Submitsucces from "../components/Submitsucces.astro";
 import Calender from "../components/Calender.astro";
+import SignupCard from "../components/SignupCard.astro";
+import Submitsucces from "../components/Submitsucces.astro";
+import ShopVideo from "../components/ShopVideo.astro";
 import "../css/style.css";
+
+const url = "https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products?select=*";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o"; // din key her
+
+const options = {
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+  },
+};
+
+let products = [];
+
+try {
+  const res = await fetch(url, options);
+  const data = await res.json();
+
+  if (Array.isArray(data) && data.length > 0) {
+    products = data.slice(0, 3); // eller hele array'et, hvis du vil
+    console.log("data:", products);
+  } else {
+    console.error("API returnerede tomt array.");
+  }
+} catch (error) {
+  console.error("Fejl ved hentning:", error);
+}
 ---
 
 <Layout>
   <HeroSection />
   <Headline />
   <InfoCard />
-  <ShopCard />
 
   <InfoCard imageUrl="infotext1.png" title="LIMITED EDITION DROP - KOM MED TIL FESTEN">
     <p>Vi tager festen til et nyt niveau! I samarbejde med Roskilde Festival lancerer vi en eksklusiv kollektion, der indfanger essensen af sommerdage, sene nætter og den der helt særlige festivalfølelse – den, man ikke kan forklare, men kun kan mærke.</p>
@@ -26,7 +48,12 @@ import "../css/style.css";
     <p>Bareen x Roskilde Festival er mere end bare tøj – det er en hel oplevelse. Vi er til stede midt på festivalpladsen med vores Bareen Basecamp, hvor du kan prøve hele kollektionen, finde dine festival-essentials samt deltage i vores Social Run og daglige events med masser af fed energi. Oplev samarbejdet. Mærk energien. Find os på Roskilde.</p>
   </InfoCard>
 
-  <Card imageUrl="/images/bareen-roskilde-shirt.png" title="Roskilde x Bareen, Boxy Fit Heavy" price="349" colors={["#ffffff", "#000000"]} />
+  <section class="product-section">
+    <div class="product-grid">
+      {products.map((product) => <Card data={product} />)}
+    </div>
+  </section>
+  <p><a href="/collab">Se hele kollektionen</a></p>
 
   <InfoCard imageUrl="textcard2.png" title="Mød os på Roskilde Festival">
     <p>Bareen rykker ind på festivalpladsen med en pop-up shop og et univers fyldt med liv, energi og fede aktiviteter.</p>
@@ -47,3 +74,11 @@ import "../css/style.css";
   <Submitsucces />
   <ShopVideo />
 </Layout>
+
+<style>
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+  }
+</style>

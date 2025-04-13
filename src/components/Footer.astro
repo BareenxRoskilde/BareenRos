@@ -1,12 +1,12 @@
 ---
 // Footer.astro
-import { FaFacebook, FaInstagram } from 'react-icons/fa'
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 ---
 
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="footerlogo.png" alt="">
+      <img src="footerlogo.png" alt="" />
     </div>
 
     <div class="footer-section">
@@ -44,13 +44,6 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa'
         <FaInstagram size={20} />
         <FaFacebook size={20} />
       </div>
-
-      <div class="payment-icons">
-        <img src="/icons/dankort.svg" alt="Dankort" />
-        <img src="/icons/visa.svg" alt="Visa" />
-        <img src="/icons/mobilepay.svg" alt="MobilePay" />
-        <img src="/icons/applepay.svg" alt="Apple Pay" />
-      </div>
     </div>
   </div>
 </footer>
@@ -67,7 +60,7 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa'
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-      font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
   }
 
   .footer-logo {
@@ -75,7 +68,6 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa'
     display: flex;
     align-items: center;
     gap: 0.5rem;
-   
   }
 
   .logo-symbol {

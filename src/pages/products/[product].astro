@@ -1,0 +1,135 @@
+---
+import Productcolor from "../../components/Productcolor.astro";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const url = `https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products`;
+  const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o"; // Erstat med din API-nøgle
+
+  const options = {
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+    },
+  };
+
+  const request = await fetch(url, options);
+  const data = await request.json();
+
+  // Tjek om dataen er tom eller ej, og returner en fejl, hvis ikke produktet findes
+  if (data.length === 0) {
+    return { notFound: true }; // Returner 404 hvis produktet ikke findes
+  }
+
+  return {
+    props: {
+      item: data[0], // Hvis der er et produkt, send det som 'item'
+    },
+  };
+}
+const { item } = Astro.props;
+---
+
+<Layout>
+  {
+    (
+      <section class="product-page">
+        <div class="product-image">
+          <img src={item.billeder} alt={item.navn} />
+        </div>
+
+        <div class="product-info">
+          <h2>{item.navn}</h2>
+          <p>{item.pris} dkk.</p>
+
+          <h3>Farve:</h3>
+          <div class="colors">
+            {item.farve?.includes("#FFFFFF") && <span class="color white" />}
+            {item.farve?.includes("#000000") && <span class="color black" />}
+            {/* Tilføj flere farver hvis nødvendigt */}
+          </div>
+
+          {item.størrelser?.split(",").map((størrelse) => (
+            <button class="size-btn">{størrelse.trim()}</button>
+          ))}
+
+          <button class="choose-size">VÆLG STØRRELSE</button>
+
+          <h3>BESKRIVELSE</h3>
+          <textarea readonly>{item.beskrivelse}</textarea>
+        </div>
+      </section>
+    )
+  }
+</Layout>
+
+<style>
+  .product-page {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    border: 1px solid #ddd;
+  }
+
+  .product-image img {
+    width: 300px;
+    height: auto;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    padding: 1rem;
+  }
+
+  .product-info {
+    max-width: 500px;
+  }
+
+  .colors {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+  }
+
+  .white {
+    background: white;
+  }
+
+  .black {
+    background: black;
+  }
+
+  .sizes {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .size-btn {
+    border: 1px solid #000;
+    padding: 0.5rem;
+    background: white;
+    cursor: pointer;
+  }
+
+  .choose-size {
+    border: 1px solid black;
+    padding: 0.75rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    font-family: inherit;
+  }
+</style>

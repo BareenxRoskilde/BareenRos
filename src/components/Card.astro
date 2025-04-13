@@ -1,37 +1,33 @@
 ---
-const { imageUrl, title, price, colors = [] } = Astro.props;
+const { data } = Astro.props;
 ---
-<div class="cards-container">
-  <div class="card">
-    <img src={imageUrl} class="product-image" />
-    <div class="card-content">
-      <h3>{title}</h3>
-      <p>{price} kr.</p>
-      <div class="colors">
-        {colors.map(color => (
-          <span class="color-dot" style={`background-color: ${color};`}></span>
-        ))}
-      </div>
-    </div>
+
+<article class="card">
+  <a href={`/products/${data.slug}`}>
+    <img src={data.billeder} alt={`Image of ${data.navn}`} class="product-image" />
+  </a>
+  <h3><strong>{data.navn}</strong></h3>
+  <p>{data.pris} kr.</p>
+
+  <div class="colors">
+    {data.farve?.includes("#FFFFFF") && <span class="color white" />}
+    {data.farve?.includes("#000000") && <span class="color black" />}
+  </div>
+</article>
+
 <style>
-    .cards-container { 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding: 2rem;
-  
-  }
   .card {
     border: 1px solid #e5e5e5;
-    padding: 1rem;
-    width: 300px;
+    /* padding: 1rem; */
+    /* width: 500px; */
     background: white;
+    margin: 3rem;
   }
 
   .product-image {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     margin-bottom: 1rem;
   }
 

@@ -1,10 +1,55 @@
 ---
-import "../css/style.css"
-import Layout from "../layouts/Layout.astro"
+// src/pages/collab.astro
+
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import "../css/style.css";
+
+const url = "https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products?select=*";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o"; // (din key her)
+
+const options = {
+  headers: {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+  },
+};
+
+let products = [];
+
+try {
+  const res = await fetch(url, options);
+  const data = await res.json();
+
+  if (Array.isArray(data)) {
+    // Find produkt med ID 5 og duplikér det
+    const specialProduct = data.find((p) => p.id === 5);
+    if (specialProduct) {
+      products = [...data, specialProduct]; // tilføj den igen sidst i arrayet
+    } else {
+      products = data;
+    }
+  }
+} catch (error) {
+  console.error("Fejl ved hentning:", error);
+}
 ---
 
 <Layout>
+  <section class="product-section">
+    <div class="product-grid">
+      {products.map((product) => <Card data={product} />)}
+    </div>
+  </section>
 
-
-
+  <div>
+    <img src="collabbillede.png" alt="" />
+  </div>
 </Layout>
+
+<style>
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+</style>
