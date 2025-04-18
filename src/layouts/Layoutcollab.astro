@@ -1,6 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
+const { children } = Astro.props;
+const logo = "/logocollab.png"; // Andet logo for collab-siden
 ---
 
 <!doctype html>
@@ -14,7 +16,7 @@ import Navigation from "../components/Navigation.astro";
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
   </head>
   <header>
-    <Navigation />
+    <Navigation logo={logo} />
   </header>
   <body>
     <slot />

@@ -1,21 +1,21 @@
 ---
-import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { FaSearch, FaHeart, FaShoppingCart } from "react-icons/fa";
+
+const { logo } = Astro.props;
 ---
 
 <header class="header">
   <nav class="nav">
-   
     <div class="logo">
-      <a href="/"><img src="bareenlogo.png" alt="logo" /></a>
+      <a href="/"><img src={logo} alt="logo" /></a>
+      <!-- <a href="/"><img src="bareenlogo.png" alt="logo" /></a> -->
     </div>
-
 
     <button class="burger" id="burger" aria-label="Menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
-
 
     <div class="menu" id="menu">
       <!-- Venstre -->
@@ -27,7 +27,6 @@ import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
         <li><a href="/collab">COLLABS</a></li>
       </ul>
 
-     
       <div class="logo-center">
         <a href="/"><img src="bareenlogo.png" alt="logo" /></a>
       </div>
@@ -46,139 +45,137 @@ import { FaSearch, FaHeart, FaShoppingCart } from 'react-icons/fa';
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
+  document.addEventListener("DOMContentLoaded", () => {
+    const burger = document.getElementById("burger");
+    const menu = document.getElementById("menu");
 
-    burger.addEventListener('click', () => {
-      menu.classList.toggle('active');
-      burger.classList.toggle('open');
+    burger.addEventListener("click", () => {
+      menu.classList.toggle("active");
+      burger.classList.toggle("open");
     });
   });
 </script>
 
 <style>
-.header {
-  padding: 1.5rem;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  font-family: sans-serif;
-  font-weight: bold;
-}
-
-
-.logo {
-  display: none; 
-}
-
-.logo img,
-.logo-center img {
-  height: 25px;
-}
-
-/* ========== BURGER ========== */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-.burger .bar {
-  width: 25px;
-  height: 3px;
-  background-color: black;
-  transition: 0.3s;
-}
-
-.burger.open .bar:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.burger.open .bar:nth-child(2) {
-  opacity: 0;
-}
-.burger.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-
-.menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-  gap: 2rem;
-}
-
-.nav-left,
-.nav-right {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-left a,
-.nav-right a {
-  text-decoration: none;
-  color: black;
-}
-
-/* Logo i midten  */
-.logo-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ========== MOBIL ========== */
-@media (max-width: 768px) {
-  .logo {
-    display: block;
+  .header {
+    padding: 1.5rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
-  .logo-center {
+  .nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    font-family: sans-serif;
+    font-weight: bold;
+  }
+
+  .logo {
     display: none;
   }
 
+  .logo img,
+  .logo-center img {
+    height: 25px;
+  }
+
+  /* ========== BURGER ========== */
   .burger {
-    display: flex;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  .burger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    transition: 0.3s;
+  }
+
+  .burger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .burger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
   }
 
   .menu {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    padding: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    z-index: 10;
-  }
-
-  .menu.active {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    gap: 2rem;
   }
 
   .nav-left,
   .nav-right {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    list-style: none;
   }
-}
+
+  .nav-left a,
+  .nav-right a {
+    text-decoration: none;
+    color: black;
+  }
+
+  /* Logo i midten  */
+  .logo-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ========== MOBIL ========== */
+  @media (max-width: 768px) {
+    .logo {
+      display: block;
+    }
+
+    .logo-center {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+
+    .menu {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .menu.active {
+      display: flex;
+    }
+
+    .nav-left,
+    .nav-right {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
 </style>

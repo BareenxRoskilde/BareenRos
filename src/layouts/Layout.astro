@@ -1,6 +1,8 @@
 ---
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
+const { children } = Astro.props;
+const logo = "/bareenlogo.png"; // Standard logo for forsiden
 ---
 
 <!doctype html>
@@ -24,7 +26,6 @@ import Navigation from "../components/Navigation.astro";
     <Footer />
   </footer>
 
-
   <style>
     html,
     body {
@@ -33,4 +34,6 @@ import Navigation from "../components/Navigation.astro";
       height: 100%;
     }
   </style>
+
+
 </html>

@@ -11,7 +11,7 @@ import ShopVideo from "../components/ShopVideo.astro";
 import "../css/style.css";
 
 const url = "https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products?select=*";
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o"; // din key her
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o";
 
 const options = {
   headers: {
@@ -53,7 +53,6 @@ try {
       {products.map((product) => <Card data={product} />)}
     </div>
   </section>
-  <p><a href="/collab">Se hele kollektionen</a></p>
 
   <InfoCard imageUrl="textcard2.png" title="Mød os på Roskilde Festival">
     <p>Bareen rykker ind på festivalpladsen med en pop-up shop og et univers fyldt med liv, energi og fede aktiviteter.</p>

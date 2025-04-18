@@ -1,36 +1,35 @@
 ---
 import Productcolor from "../../components/Productcolor.astro";
-import Layout from "../../layouts/Layout.astro";
+import Layoutcollab from "../../layouts/Layoutcollab.astro";
 
 export async function getStaticPaths() {
   const url = `https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products`;
-  const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o"; // Erstat med din API-nøgle
+  const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o";
 
   const options = {
     headers: {
       apikey: key,
-      Authorization: `Bearer ${key}`,
     },
   };
 
-  const request = await fetch(url, options);
-  const data = await request.json();
+  const response = await fetch(url, options);
 
-  // Tjek om dataen er tom eller ej, og returner en fejl, hvis ikke produktet findes
-  if (data.length === 0) {
-    return { notFound: true }; // Returner 404 hvis produktet ikke findes
+  if (!response.ok) {
+    console.error("Fejl ved fetch:", await response.text());
   }
 
-  return {
-    props: {
-      item: data[0], // Hvis der er et produkt, send det som 'item'
-    },
-  };
+  const data = await response.json();
+
+  return data.map((item) => ({
+    params: { product: item.slug },
+    props: { item },
+  }));
 }
 const { item } = Astro.props;
+console.log("size:", item.size);
 ---
 
-<Layout>
+<Layoutcollab>
   {
     (
       <section class="product-page">
@@ -46,37 +45,31 @@ const { item } = Astro.props;
           <div class="colors">
             {item.farve?.includes("#FFFFFF") && <span class="color white" />}
             {item.farve?.includes("#000000") && <span class="color black" />}
-            {/* Tilføj flere farver hvis nødvendigt */}
           </div>
 
-          {item.størrelser?.split(",").map((størrelse) => (
-            <button class="size-btn">{størrelse.trim()}</button>
-          ))}
-
-          <button class="choose-size">VÆLG STØRRELSE</button>
-
           <h3>BESKRIVELSE</h3>
-          <textarea readonly>{item.beskrivelse}</textarea>
+          <textarea readOnly>{item.beskrivelse}</textarea>
         </div>
       </section>
     )
   }
-</Layout>
+</Layoutcollab>
 
 <style>
   .product-page {
     display: flex;
-    gap: 2rem;
+    gap: 15rem;
     padding: 2rem;
     border: 1px solid #ddd;
+    margin-inline: 10rem;
   }
 
   .product-image img {
-    width: 300px;
+    width: 480px;
     height: auto;
     border: 1px solid #ccc;
     background: #f9f9f9;
-    padding: 1rem;
+    /* padding: 1rem; */
   }
 
   .product-info {
@@ -125,7 +118,7 @@ const { item } = Astro.props;
   }
 
   textarea {
-    width: 100%;
+    width: 102%;
     height: 100px;
     resize: none;
     border: 1px solid #ccc;

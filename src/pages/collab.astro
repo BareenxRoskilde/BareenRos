@@ -1,7 +1,7 @@
 ---
 // src/pages/collab.astro
 
-import Layout from "../layouts/Layout.astro";
+import Layoutcollab from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import "../css/style.css";
 
@@ -35,7 +35,7 @@ try {
 }
 ---
 
-<Layout>
+<Layoutcollab>
   <section class="product-section">
     <div class="product-grid">
       {products.map((product) => <Card data={product} />)}
@@ -45,7 +45,7 @@ try {
   <div>
     <img src="collabbillede.png" alt="" />
   </div>
-</Layout>
+</Layoutcollab>
 
 <style>
   .product-grid {
