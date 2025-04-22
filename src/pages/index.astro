@@ -9,37 +9,27 @@ import SignupCard from "../components/SignupCard.astro";
 import Submitsucces from "../components/Submitsucces.astro";
 import ShopVideo from "../components/ShopVideo.astro";
 import "../css/style.css";
+import Shopbutton from "../components/Shopbutton.astro";
 
-const url = "https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products?select=*";
+const url = "https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products?id=in.(1,2,3)&select=*";
 const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zZXdveXloZXNwbXVpeHFreHBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQyNjc4MzAsImV4cCI6MjA1OTg0MzgzMH0.UQMULJOt8wEe0LmO9nADOpmbE7EAABe2zNrTuy5JS2o";
 
 const options = {
   headers: {
     apikey: key,
-    Authorization: `Bearer ${key}`,
   },
 };
 
 let products = [];
 
-try {
-  const res = await fetch(url, options);
-  const data = await res.json();
+const res = await fetch(url, options);
+const data = await res.json();
 
-  if (Array.isArray(data) && data.length > 0) {
-    products = data.slice(0, 3); // eller hele array'et, hvis du vil
-    console.log("data:", products);
-  } else {
-    console.error("API returnerede tomt array.");
-  }
-} catch (error) {
-  console.error("Fejl ved hentning:", error);
-}
+products = data.slice(0, 3);
 ---
 
 <Layout>
   <HeroSection />
-  <Headline />
   <InfoCard />
 
   <InfoCard imageUrl="infotext1.png" title="LIMITED EDITION DROP - KOM MED TIL FESTEN">
@@ -47,6 +37,8 @@ try {
     <p>Kollektionen kombinerer Bareens karakteristiske Streetwear med Roskildes ikoniske energi. Du kan forvente vilde styles og stærke detaljer – men som altid… der er begrænset antal, så det gælder om at være hurtig.</p>
     <p>Bareen x Roskilde Festival er mere end bare tøj – det er en hel oplevelse. Vi er til stede midt på festivalpladsen med vores Bareen Basecamp, hvor du kan prøve hele kollektionen, finde dine festival-essentials samt deltage i vores Social Run og daglige events med masser af fed energi. Oplev samarbejdet. Mærk energien. Find os på Roskilde.</p>
   </InfoCard>
+
+  <Shopbutton />
 
   <section class="product-section">
     <div class="product-grid">
@@ -61,6 +53,7 @@ try {
     <p>Tjek vores eventkalender for bareen x RF herunder, og hold dig opdateret på alt der sker i Bareen Basecamp.</p>
   </InfoCard>
 
+  <Headline />
   <Calender />
 
   <InfoCard imageUrl="popupshop.png" title="Få eksklusivt adgang før alle andre">
@@ -75,9 +68,34 @@ try {
 </Layout>
 
 <style>
+  @media (min-width: 600px) {
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+      width: 97%;
+      margin-inline: 1.3rem;
+    }
+  }
+
   .product-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    padding: 1rem;
+  }
+
+  /* Mellemstore skærme (fx tablets) */
+  @media (max-width: 900px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Små skærme (mobil) */
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

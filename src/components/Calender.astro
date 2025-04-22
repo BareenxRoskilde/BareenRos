@@ -6,21 +6,21 @@
   <!-- Mobil slideshow -->
   <div class="slideshow-box">
     <button class="arrow left" id="prevBtn">❮</button>
-    <img id="slideshow-image" src="caonsdag.png" alt="Slideshow image" />
+    <img id="slideshow-image" src="onsdag.png" alt="Slideshow image" />
     <button class="arrow right" id="nextBtn">❯</button>
   </div>
 
   <!-- Desktop grid -->
   <div class="calender">
-    <img src="caonsdag.png" alt="" />
-    <img src="catorsdag.png" alt="" />
-    <img src="cafredag.png" alt="" />
-    <img src="calørdag.png" alt="" />
+    <img src="onsdag.png" alt="" />
+    <img src="torsdag.png" alt="" />
+    <img src="fredag.png" alt="" />
+    <img src="lordag.png" alt="" />
   </div>
 </div>
 
 <script type="module">
-  const images = ["caonsdag.png", "catorsdag.png", "cafredag.png", "calørdag.png"];
+  const images = ["onsdag.png", "torsdag.png", "fredag.png", "lordag.png"];
 
   let currentIndex = 0;
 
@@ -96,10 +96,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
+    margin-inline: 1rem;
   }
 
-  /* Kun mobil: vis slideshow, skjul grid */
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     .slideshow-box {
       display: flex;
     }
