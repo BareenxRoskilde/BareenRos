@@ -28,6 +28,7 @@ products.sort((a, b) => {
 ---
 
 <Layoutcollab>
+  <h1>BAREEN X ROSKILDE FESTIVAL</h1>
   <section class="product-section">
     <div class="product-grid">
       {products.map((product) => <Card data={product} />)}
@@ -49,6 +50,16 @@ products.sort((a, b) => {
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem;
     padding: 1rem;
+    margin-bottom: 3rem;
+  }
+  h1 {
+    font-family: "Inter", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    color: #6b6868;
   }
 
   @media (max-width: 900px) {
