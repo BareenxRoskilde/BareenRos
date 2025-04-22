@@ -3,43 +3,37 @@
 ---
 
 <div class="popup-container" id="popup">
-    <div class="popup">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <h2>Vi glæder os til at byde dig ind i Bareen x Roskilde universet! Hold øje med din mail for eksklusiv adgang til den unikke kollektion</h2>
-        <img src="Bareenorange.png" alt="logo">
-    </div>
+  <div class="popup">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h2>Vi glæder os til at byde dig ind i Bareen x Roskilde universet! Hold øje med din mail for eksklusiv adgang til den unikke kollektion</h2>
+    <img src="Bareenorange.png" alt="logo" />
+  </div>
 </div>
 
-
-
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Åbner popup-vinduet
+  document.addEventListener("DOMContentLoaded", function () {
     function openPopup() {
-      const popup = document.getElementById('popup');
+      const popup = document.getElementById("popup");
       if (popup) {
-        popup.style.display = 'flex';
+        popup.style.display = "flex";
       }
     }
 
-    // Lukker popup-vinduet
     function closePopup() {
-      const popup = document.getElementById('popup');
+      const popup = document.getElementById("popup");
       if (popup) {
-        popup.style.display = 'none';
+        popup.style.display = "none";
       }
     }
 
-    // Hent knappen og tilføj eventlistener
-    const signUpButton = document.querySelector('.send');
+    const signUpButton = document.querySelector(".send");
     if (signUpButton) {
-      signUpButton.addEventListener('click', openPopup);
+      signUpButton.addEventListener("click", openPopup);
     }
 
-    // Tilføj event listener til close button for at lukke popupen
-    const closeButton = document.querySelector('.close-btn');
+    const closeButton = document.querySelector(".close-btn");
     if (closeButton) {
-      closeButton.addEventListener('click', closePopup);
+      closeButton.addEventListener("click", closePopup);
     }
   });
 </script>
@@ -67,15 +61,15 @@
     width: 725px;
     z-index: 1001;
   }
-img{
+  img {
     z-index: 1002;
     margin-top: 1rem;
-}
+  }
   .popup h2 {
     color: white;
     line-height: 30px;
     margin-bottom: 4rem;
-     font-family: "Inter", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 300;
     font-size: 1.2rem;
   }

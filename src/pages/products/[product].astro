@@ -1,7 +1,7 @@
 ---
+//@ts-nocheck
 import Productcolor from "../../components/Productcolor.astro";
 import Layoutcollab from "../../layouts/Layoutcollab.astro";
-// import "../css/style.css";
 
 export async function getStaticPaths() {
   const url = `https://osewoyyhespmuixqkxpd.supabase.co/rest/v1/products`;
@@ -46,9 +46,7 @@ const { item } = Astro.props;
               {Object.entries(item.size)
                 .filter(([_, value]) => value) // Kun de størrelser der er true
                 .map(([size]) => (
-                  <button class="size-btn" key={size}>
-                    {size}
-                  </button>
+                  <button class="size-btn">{size}</button>
                 ))}
             </div>
           )}
