@@ -3,14 +3,12 @@
 ---
 
 <div class="calender-wrapper">
-  <!-- Mobil slideshow -->
   <div class="slideshow-box">
     <button class="arrow left" id="prevBtn">❮</button>
     <img id="slideshow-image" src="onsdag.png" alt="Slideshow image" />
     <button class="arrow right" id="nextBtn">❯</button>
   </div>
 
-  <!-- Desktop grid -->
   <div class="calender">
     <img src="onsdag.png" alt="" />
     <img src="torsdag.png" alt="" />
@@ -54,7 +52,6 @@
     width: 100%;
   }
 
-  /* Slideshow container */
   .slideshow-box {
     position: relative;
     display: none;
@@ -67,7 +64,6 @@
     max-width: 400px;
   }
 
-  /* Pile */
   .arrow {
     position: absolute;
     top: 50%;
@@ -91,7 +87,6 @@
     right: 10px;
   }
 
-  /* Grid layout til desktop */
   .calender {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

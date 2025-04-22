@@ -19,7 +19,6 @@ const { logo } = Astro.props;
     </button>
 
     <div class="menu" id="menu">
-      <!-- Venstre -->
       <ul class="nav-left">
         <li><a href="#">HERRE</a></li>
         <li><a href="#">DAME</a></li>
@@ -29,14 +28,11 @@ const { logo } = Astro.props;
       </ul>
 
       <div class="logo-center">
-        <!-- <a href="/"><img src="bareenlogo.png" alt="logo" /></a> -->
-        <!-- <img src={logo} alt="logo" /> -->
         <a href="/">
           <img src={logo} alt="logo" class={logo.includes("footer") ? "logo-footer" : "logo-default"} />
         </a>
       </div>
 
-      <!-- Højre  -->
       <ul class="nav-right">
         <li><a href="#">CLUB</a></li>
         <li><a href="#">LOG IND</a></li>
@@ -96,7 +92,6 @@ const { logo } = Astro.props;
     height: 50px;
   }
 
-  /* ========== BURGER ========== */
   .burger {
     display: none;
     flex-direction: column;
@@ -145,14 +140,12 @@ const { logo } = Astro.props;
     color: black;
   }
 
-  /* Logo i midten  */
   .logo-center {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
 
-  /* ========== MOBIL ========== */
   @media (max-width: 768px) {
     .logo {
       display: block;

@@ -1,4 +1,5 @@
 ---
+//@ts-nocheck
 // src/pages/collab.astro
 
 import Layoutcollab from "../layouts/Layoutcollab.astro";
@@ -50,14 +51,12 @@ products.sort((a, b) => {
     padding: 1rem;
   }
 
-  /* Mellemstore skærme (fx tablets) */
   @media (max-width: 900px) {
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  /* Små skærme (mobil) */
   @media (max-width: 600px) {
     .product-grid {
       grid-template-columns: 1fr;

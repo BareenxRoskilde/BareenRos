@@ -1,4 +1,5 @@
 ---
+//@ts-nocheck
 import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
@@ -74,7 +75,7 @@ products = data.slice(0, 3);
       grid-template-columns: repeat(3, 1fr);
       gap: 13px;
       width: 97%;
-      margin-inline: 1.3rem;
+      margin-inline: 0.3rem;
     }
   }
 
@@ -85,14 +86,12 @@ products = data.slice(0, 3);
     padding: 1rem;
   }
 
-  /* Mellemstore skærme (fx tablets) */
   @media (max-width: 900px) {
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  /* Små skærme (mobil) */
   @media (max-width: 600px) {
     .product-grid {
       grid-template-columns: 1fr;
