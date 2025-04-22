@@ -7,8 +7,9 @@ const { logo } = Astro.props;
 <header class="header">
   <nav class="nav">
     <div class="logo">
-      <a href="/"><img src={logo} alt="logo" /></a>
-      <!-- <a href="/"><img src="bareenlogo.png" alt="logo" /></a> -->
+      <a href="/">
+        <img src={logo} alt="logo" class={logo.includes("footer") ? "logo-footer" : "logo-default"} />
+      </a>
     </div>
 
     <button class="burger" id="burger" aria-label="Menu">
@@ -28,14 +29,18 @@ const { logo } = Astro.props;
       </ul>
 
       <div class="logo-center">
-        <a href="/"><img src="bareenlogo.png" alt="logo" /></a>
+        <!-- <a href="/"><img src="bareenlogo.png" alt="logo" /></a> -->
+        <!-- <img src={logo} alt="logo" /> -->
+        <a href="/">
+          <img src={logo} alt="logo" class={logo.includes("footer") ? "logo-footer" : "logo-default"} />
+        </a>
       </div>
 
       <!-- Højre  -->
       <ul class="nav-right">
         <li><a href="#">CLUB</a></li>
         <li><a href="#">LOG IND</a></li>
-        <li><img src="flag.png" alt="Flag" /></li>
+        <li><img src="/flag.png" alt="Flag" /></li>
         <li><FaSearch size={18} /></li>
         <li><FaHeart size={18} /></li>
         <li><FaShoppingCart size={18} /></li>
@@ -77,11 +82,18 @@ const { logo } = Astro.props;
 
   .logo {
     display: none;
+    align-items: center;
   }
 
   .logo img,
   .logo-center img {
-    height: 25px;
+    height: auto;
+    max-height: 45px;
+  }
+
+  .logo-footer {
+    max-height: none;
+    height: 50px;
   }
 
   /* ========== BURGER ========== */
@@ -148,6 +160,22 @@ const { logo } = Astro.props;
 
     .logo-center {
       display: none;
+    }
+
+    .logo-footer {
+      max-height: none;
+      height: 30px;
+    }
+
+    .logo img,
+    .logo-center img {
+      height: auto;
+      max-height: 37px;
+    }
+
+    .logo-footer {
+      max-height: none;
+      height: 50px;
     }
 
     .burger {

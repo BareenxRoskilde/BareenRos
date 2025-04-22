@@ -6,50 +6,74 @@ const { data } = Astro.props;
   <a href={`/products/${data.slug}`}>
     <img src={data.billeder} alt={`Image of ${data.navn}`} class="product-image" />
   </a>
-  <h3><strong>{data.navn}</strong></h3>
-  <p>{data.pris} kr.</p>
 
-  <div class="colors">
-    {data.farve?.includes("#FFFFFF") && <span class="color white" />}
-    {data.farve?.includes("#000000") && <span class="color black" />}
+  <div class="card-content">
+    <h3 class="product-name"><strong>{data.navn}</strong></h3>
+
+    <div class="price-color-row">
+      {data.pris && <p class="product-price">{data.pris} kr.</p>}
+
+      <div class="colors">
+        {data.farve?.includes("#FFFFFF") && <span class="color-dot white" />}
+        {data.farve?.includes("#000000") && <span class="color-dot black" />}
+      </div>
+    </div>
   </div>
 </article>
 
 <style>
   .card {
+    display: flex;
+    flex-direction: column;
     border: 1px solid #e5e5e5;
-    /* padding: 1rem; */
-    /* width: 500px; */
     background: white;
-    margin: 3rem;
+    padding: 0;
   }
 
   .product-image {
     width: 100%;
     height: auto;
-    /* border-radius: 8px; */
-    margin-bottom: 1rem;
+    display: block;
+    background: #f6f6f6;
   }
 
-  .card-content h3 {
-    font-size: 1rem;
+  .card-content {
+    padding: 0.75rem 1rem 1rem 1rem;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
     font-weight: bold;
-    margin: 0;
+    margin: 0 0 0.4rem 0;
   }
 
-  .card-content p {
-    margin: 0.5rem 0;
+  .price-color-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .product-price {
+    font-size: 0.85rem;
+    margin: 0;
   }
 
   .colors {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .color-dot {
-    width: 30px;
-    height: 15px;
-    border-radius: 10%;
+    width: 20px;
+    height: 20px;
     border: 1px solid #ccc;
+  }
+
+  .white {
+    background: white;
+  }
+
+  .black {
+    background: black;
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 // src/pages/collab.astro
 
-import Layoutcollab from "../layouts/Layout.astro";
+import Layoutcollab from "../layouts/Layoutcollab.astro";
 import Card from "../components/Card.astro";
 import "../css/style.css";
 
@@ -17,22 +17,13 @@ const options = {
 
 let products = [];
 
-try {
-  const res = await fetch(url, options);
-  const data = await res.json();
+const res = await fetch(url, options);
+const data = await res.json();
 
-  if (Array.isArray(data)) {
-    // Find produkt med ID 5 og duplikér det
-    const specialProduct = data.find((p) => p.id === 5);
-    if (specialProduct) {
-      products = [...data, specialProduct]; // tilføj den igen sidst i arrayet
-    } else {
-      products = data;
-    }
-  }
-} catch (error) {
-  console.error("Fejl ved hentning:", error);
-}
+products = data;
+products.sort((a, b) => {
+  return a.id - b.id;
+});
 ---
 
 <Layoutcollab>
@@ -43,13 +34,33 @@ try {
   </section>
 
   <div>
-    <img src="collabbillede.png" alt="" />
+    <img class="collabbillede" src="collabbillede.png" alt="" />
   </div>
 </Layoutcollab>
 
 <style>
+  .collabbillede {
+    width: 100%;
+  }
+
   .product-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    padding: 1rem;
+  }
+
+  /* Mellemstore skærme (fx tablets) */
+  @media (max-width: 900px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Små skærme (mobil) */
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
